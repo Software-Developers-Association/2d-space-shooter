@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 	public float speed = 1.0F; // moves 'speed' units per second... (speed)
 	public float rotation = 90.0F; // rotates 'rotation' amount of degrees per second.
+	public Weapon weapon;
 
 	private void Update() {
 		float xAxis = Input.GetAxis("Horizontal");
@@ -23,5 +24,9 @@ public class Ship : MonoBehaviour {
 		position += this.transform.rotation * forwardDelta;
 
 		this.transform.position = position;
+
+		if(Input.GetKeyDown(KeyCode.Mouse0)) {
+			this.weapon.Fire();
+		}
 	}
 }
